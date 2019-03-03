@@ -71,6 +71,12 @@ class User extends BaseUser
     protected $unlockDate;
 
     /**
+     * @var string|null
+     * @ORM\Column(type="text", nullable=true)
+     */
+    protected $lastJwt;
+
+    /**
      * @var \DateTime|null
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime", nullable=true)
@@ -375,5 +381,21 @@ class User extends BaseUser
     public function setUpdatedAt(?\DateTime $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLastJwt(): ?string
+    {
+        return $this->lastJwt;
+    }
+
+    /**
+     * @param string|null $lastJwt
+     */
+    public function setLastJwt(?string $lastJwt): void
+    {
+        $this->lastJwt = $lastJwt;
     }
 }
