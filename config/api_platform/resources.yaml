@@ -1,0 +1,13 @@
+App\Entity\User:
+  attributes:
+    access_control: 'is_granted("ROLE_ADMIN")'
+  collectionOperations:
+    post:
+      method: 'POST'
+      access_control: 'is_granted("ROLE_ADMIN")'
+      access_control_message: 'Only admins can add books.'
+  itemOperations:
+    get:
+      method: 'GET'
+      access_control: 'is_granted("ROLE_USER")'
+      access_control_message: 'Sorry, but you are not the book owner.'
