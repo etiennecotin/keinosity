@@ -6,6 +6,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
@@ -45,6 +46,11 @@ class User extends BaseUser
      * @ORM\Column(type="string", length=150, nullable=true)
      */
     protected $name;
+
+    /**
+     * @Groups("project")
+     */
+    protected $username;
 
     /**
      * @var string|null

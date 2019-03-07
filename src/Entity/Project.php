@@ -5,9 +5,10 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
+ * @ApiResource(normalizationContext={"groups"={"project"}})
  * @ORM\Entity(repositoryClass="App\Repository\ProjectRepository")
  */
 class Project
@@ -21,6 +22,7 @@ class Project
 
     /**
      * @var string
+     * @Groups({"project"})
      * @ORM\Column(type="string", length=255, nullable=false)
      */
     private $name;
@@ -39,7 +41,8 @@ class Project
 
     /**
      * @var User|null
-     * @ORM\ManyToOne(targetEntity="User")
+     * @Groups({"project"})
+     * @ORM\ManyToOne(targetEntity="User", fetch="EAGER")
      */
     private $author;
 
