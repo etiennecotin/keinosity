@@ -16,6 +16,7 @@ class Project
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
+     * @Groups({"project"})
      * @ORM\Column(type="integer")
      */
     private $id;
@@ -29,12 +30,14 @@ class Project
 
     /**
      * @var string|null
+     * @Groups({"project"})
      * @ORM\Column(type="string", length=150)
      */
     private $type;
 
     /**
      * @var string|null
+     * @Groups({"project"})
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
@@ -48,6 +51,7 @@ class Project
 
     /**
      * @var string|null
+     * @Groups({"project"})
      * @ORM\Column(type="string", length=300)
      */
     private $location;
@@ -65,6 +69,7 @@ class Project
     /**
      * @var \DateTime|null
      * @Gedmo\Timestampable(on="create")
+     * @Groups({"project"})
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $createdAt;
