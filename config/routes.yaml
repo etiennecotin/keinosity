@@ -15,5 +15,9 @@ register:
 #    path: /api
 #    controller: App\Controller\AuthController::api
 
-fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+app_logout:
+    path: /logout
+    methods: GET
+
+#fos_user:
+#    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
