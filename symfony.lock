@@ -107,14 +107,14 @@
     "fig/link-util": {
         "version": "1.0.0"
     },
-    "friendsofsymfony/user-bundle": {
-        "version": "v2.1.2"
-    },
     "gedmo/doctrine-extensions": {
         "version": "v2.4.36"
     },
     "gesdinet/jwt-refresh-token-bundle": {
         "version": "v0.5.4"
+    },
+    "graylog2/gelf-php": {
+        "version": "1.6.2"
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
@@ -154,6 +154,9 @@
     },
     "pagerfanta/pagerfanta": {
         "version": "v2.0.1"
+    },
+    "paragonie/constant_time_encoding": {
+        "version": "v2.2.3"
     },
     "phpdocumentor/reflection-common": {
         "version": "1.0.1"
@@ -408,7 +411,7 @@
         }
     },
     "symfony/templating": {
-        "version": "v4.2.3"
+        "version": "v4.2.8"
     },
     "symfony/test-pack": {
         "version": "v1.0.5"
