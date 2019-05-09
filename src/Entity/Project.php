@@ -31,7 +31,7 @@ class Project
     /**
      * @var string|null
      * @Groups({"project"})
-     * @ORM\Column(type="string", length=150)
+     * @ORM\OneToMany(targetEntity="ProjectType", mappedBy="projects")
      */
     private $type;
 
