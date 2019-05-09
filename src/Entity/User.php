@@ -6,7 +6,11 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
@@ -20,8 +24,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity("email")
  */
-class User extends BaseUser
+class User implements UserInterface
 {
 
     const INITIAL_ROLE = 'init';
@@ -36,6 +41,46 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     * @Groups("project")
+     */
+    protected $username;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $usernameCanonical;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Assert\Email
+     */
+    protected $email;
+
+    /**
+     * @var bool
+     * @ORM\Column(type="boolean")
+     */
+    protected $enabled;
+
+    /**
+     * Encrypted password. Must be persisted.
+     *
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    protected $password;
+
+    /**
+     * @var array
+     * @ORM\Column(type="array", nullable=true)
+     */
+    protected $roles;
+
+    /**
      * @var string|null
      * @ORM\Column(type="string", length=300, nullable=true)
      */
@@ -46,11 +91,6 @@ class User extends BaseUser
      * @ORM\Column(type="string", length=150, nullable=true)
      */
     protected $name;
-
-    /**
-     * @Groups("project")
-     */
-    protected $username;
 
     /**
      * @var string|null
@@ -66,7 +106,7 @@ class User extends BaseUser
 
     /**
      * @var string|null
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, unique=true)
      */
     protected $token;
 
@@ -84,6 +124,12 @@ class User extends BaseUser
 
     /**
      * @var \DateTime|null
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    protected $lastLogin;
+
+    /**
+     * @var \DateTime|null
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime", nullable=true)
      */
@@ -98,17 +144,89 @@ class User extends BaseUser
 
     public function __construct()
     {
-        parent::__construct();
+        $this->enabled = false;
     }
 
     public function __toString()
     {
-        return $this->email;
+        return (string) $this->email;
     }
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUsernameCanonical():? string
+    {
+        return $this->usernameCanonical;
+    }
+
+    /**
+     * @param string $usernameCanonical
+     * @return User
+     */
+    public function setUsernameCanonical(string $usernameCanonical): User
+    {
+        $this->usernameCanonical = $usernameCanonical;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail():? string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     * @return User
+     */
+    public function setEmail(string $email): User
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEnabled():? bool
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * @param bool $enabled
+     * @return User
+     */
+    public function setEnabled(bool $enabled): User
+    {
+        $this->enabled = $enabled;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getLastLogin(): ?\DateTime
+    {
+        return $this->lastLogin;
+    }
+
+    /**
+     * @param \DateTime|null $lastLogin
+     * @return User
+     */
+    public function setLastLogin(?\DateTime $lastLogin): User
+    {
+        $this->lastLogin = $lastLogin;
+        return $this;
     }
 
     /**
@@ -403,5 +521,48 @@ class User extends BaseUser
     public function setLastJwt(?string $lastJwt): void
     {
         $this->lastJwt = $lastJwt;
+    }
+
+    /**
+     * Returns the password used to authenticate the user.
+     *
+     * This should be the encoded password. On authentication, a plain-text
+     * password will be salted, encoded, and then compared to this value.
+     *
+     * @return string The password
+     */
+    public function getPassword()
+    {
+        return (string) $this->password;
+    }
+
+    /**
+     * Returns the username used to authenticate the user.
+     *
+     * @return string The username
+     */
+    public function getUsername()
+    {
+        return (string) $this->username;
+    }
+
+    /**
+     * @param string $username
+     * @return User
+     */
+    public function setUsername(string $username): User
+    {
+        $this->username = $username;
+        return $this;
+    }
+
+    /**
+     * @param string $password
+     * @return User
+     */
+    public function setPassword(string $password): User
+    {
+        $this->password = $password;
+        return $this;
     }
 }

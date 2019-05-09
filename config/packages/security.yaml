@@ -1,10 +1,8 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     encoders:
-        FOS\UserBundle\Model\UserInterface: bcrypt
+        App\Entity\User: bcrypt
     providers:
-        fos_userbundle:
-            id: fos_user.user_provider.username_email
         entity_provider:
             entity:
                 class: App\Entity\User
@@ -18,17 +16,20 @@ security:
             pattern:  ^/api/login
             stateless: true
             anonymous: true
-            provider: fos_userbundle
+            provider: entity_provider
             json_login:
                 check_path:               /api/login_check
                 success_handler:          lexik_jwt_authentication.handler.authentication_success
                 failure_handler:          lexik_jwt_authentication.handler.authentication_failure
-
+        register:
+            pattern:  ^/api/register
+            stateless: true
+            anonymous: true
         api:
             pattern:   ^/api/.*
             stateless: true
             anonymous: true
-            provider: fos_userbundle
+            provider: entity_provider
             guard:
                 authenticators:
                     - lexik_jwt_authentication.jwt_token_authenticator
@@ -36,26 +37,28 @@ security:
                 authorization_header: # check token in Authorization Header
                     enabled: true
                     prefix:  Bearer
-        register:
-            pattern:  ^/api/register
-            stateless: true
-            anonymous: true
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             pattern: ^/
             anonymous: ~
-            provider: fos_userbundle
+            provider: entity_provider
             form_login:
-                provider: fos_userbundle
-                csrf_token_generator: security.csrf.token_manager
-            logout:       true
+                check_path: app_login
+                login_path: app_login
+                default_target_path: home
+            logout:
+                path:   /logout
+                target: /login
             http_basic: ~
             remember_me:
                 secret:   '%kernel.secret%'
                 path:     /
                 always_remember_me: true
+            guard:
+                authenticators:
+                    - App\Security\LoginFormAuthenticator
 
     role_hierarchy:
         ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
@@ -67,13 +70,15 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
-        - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/login_check, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/token/refresh, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, role: ROLE_USER }
         - { path: ^/api/.*, roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/api, roles: ROLE_ADMIN }
-        - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
