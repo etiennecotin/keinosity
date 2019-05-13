@@ -17,13 +17,39 @@ class ProjectType
     private $id;
 
     /**
+     * @var string|null
+     * @ORM\Column(type="string")
+     */
+    private $name;
+
+    /**
      * @var
      * @ORM\ManyToOne(targetEntity="Project", inversedBy="type")
      */
     private $projects;
 
+    private $createAt;
+
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @param string $name
+     * @return ProjectType
+     */
+    public function setName(string $name): ProjectType
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName():? string
+    {
+        return $this->name;
     }
 }
