@@ -1,0 +1,65 @@
+<aside id="sidebar-left" class="sidebar-left">
+
+    <div class="sidebar-header">
+        <div class="sidebar-title">
+            Navigation
+        </div>
+        <div class="sidebar-toggle hidden-xs" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
+            <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+        </div>
+    </div>
+
+    <div class="nano">
+        <div class="nano-content">
+            <nav id="menu" class="nav-main" role="navigation">
+                <ul class="nav nav-main">
+                    <li class="nav-active">
+                        <a href="{{ path('home') }}">
+                            <i class="fa fa-home" aria-hidden="true"></i>
+                            <span>Tableau de bord</span>
+                        </a>
+                    </li>
+                    <li class="nav-parent">
+                        <a>
+                            <i class="fa fa-copy" aria-hidden="true"></i>
+                            <span>Projets</span>
+                        </a>
+                        <ul class="nav nav-children">
+                            <li>
+                                <a href="pages-signup.html">
+                                    Liste
+                                </a>
+                            </li>
+                            <li>
+                                <a href="pages-signin.html">
+                                    Ajouter
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-parent">
+                        <a>
+                            <i class="fa fa-copy" aria-hidden="true"></i>
+                            <span>Types de projet</span>
+                        </a>
+                        <ul class="nav nav-children">
+                            <li>
+                                <a href="{{path('project_type') }}">
+                                    Liste
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('add_project_type') }}">
+                                    Ajouter
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+
+</aside>
