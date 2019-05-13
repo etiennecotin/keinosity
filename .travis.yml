@@ -1,6 +1,7 @@
 language: php
 php:
   - 7.1.9
+sudo: true
 
 cache:
   directories:
@@ -33,4 +34,4 @@ before_script:
   - composer install
 
 script:
-  - ./bin/phpunit
+  - php bin/phpunit
