@@ -12,11 +12,16 @@ require('../css/app.scss');
 // const $ = require('jquery');
 
 const $ = require('jquery');
+// require('modernizr');
 // this "modifies" the jquery module: adding behavior to it
 // the bootstrap module doesn't export/return anything
-require('bootstrap');
+require('./bootstrap');
 require('bootstrap-datepicker');
-
+require('nanoscroller');
+require('magnific-popup');
+require('jquery-ui');
+require('bootstrap-multiselect');
+require('flot');
 // or you can include specific pieces
 // require('bootstrap/js/dist/tooltip');
 // require('bootstrap/js/dist/popover');
