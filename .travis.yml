@@ -1,7 +1,6 @@
 language: php
 php:
   - 7.1.9
-sudo: false
 
 cache:
   directories:
