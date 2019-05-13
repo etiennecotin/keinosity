@@ -1,1 +1,19 @@
 /* Add here all your CSS customizations */
+.header {
+    position: fixed;
+}
+.content-body {
+    width: 100%;
+    padding-left: 340px;
+}
+/*.content-body .row:first-child {*/
+    /*margin-top: 3%;*/
+/*}*/
+/*.page-header {*/
+    /*position: fixed;*/
+    /*width: 100%;*/
+/*}*/
+.sidebar-left {
+    position: fixed;
+    height: 100%;
+}
