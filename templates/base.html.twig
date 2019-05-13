@@ -29,7 +29,12 @@
                 {% endfor %}
             {% endfor %}
 
-            {% block body %}{% endblock %}
+            <div class="inner-wrapper">
+                {% if app.user %}
+                    {% include 'left-nav.html.twig' %}
+                {% endif %}
+                {% block body %}{% endblock %}
+            </div>
         </section>
         {{ encore_entry_script_tags('app') }}
         {% block javascripts %}{% endblock %}
