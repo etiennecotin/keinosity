@@ -3,6 +3,7 @@
 namespace App\Services;
 
 
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Routing\RouterInterface;
 use Twig\Environment;
 use Twig\Error\LoaderError;
@@ -17,18 +18,22 @@ class EmailService
     private $twig;
     /** @var RouterInterface  */
     private $router;
+    /** @var LoggerInterface */
+    private $logger;
 
     const SENDER_EMAIL = 'etienne.cotin.pro@gmail.com';
 
-    public function __construct(\Swift_Mailer $mailer, Environment $twig, RouterInterface $router)
+    public function __construct(\Swift_Mailer $mailer, Environment $twig, RouterInterface $router, LoggerInterface $logger)
     {
         $this->mailer = $mailer;
         $this->twig = $twig;
         $this->router = $router;
+        $this->logger = $logger;
     }
 
     /**
      * @param string $receiver Email of receiver
+     * @throws \Exception
      */
     public function sendRegistration(string $receiver): void
     {
@@ -46,9 +51,14 @@ class EmailService
                 );
             $this->mailer->send($message);
         } catch (LoaderError $e) {
-
+            $logDate = new \DateTime();
+            $this->logger->error('['.$logDate->format('d/m/Y').'] Email was not send');
         } catch (RuntimeError $e) {
+            $logDate = new \DateTime();
+            $this->logger->error('['.$logDate->format('d/m/Y').'] Email was not send');
         } catch (SyntaxError $e) {
+            $logDate = new \DateTime();
+            $this->logger->error('['.$logDate->format('d/m/Y').'] Email was not send');
         }
     }
 }
