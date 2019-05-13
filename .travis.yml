@@ -30,5 +30,8 @@ before_install:
 install:
   - composer install
 
+before_script:
+  - composer install
+
 script:
   - ./bin/phpunit
