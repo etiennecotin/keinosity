@@ -152,6 +152,19 @@ class User implements UserInterface
         return (string) $this->email;
     }
 
+    public function create(string $email, string $username, $birthDay, $firstName, $name, $location, $password): User
+    {
+        $this->email = $email;
+        $this->username = $username;
+        $this->birthDay =$birthDay;
+        $this->firstName = $firstName;
+        $this->name = $name;
+        $this->location = $location;
+        $this->password = $password;
+
+        return $this;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
