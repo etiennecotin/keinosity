@@ -25,12 +25,14 @@
                     <a href="#" class="fa fa-times"></a>
                 </div>
 
-                <h2 class="panel-title">Formulaire</h2>
+                <h2 class="panel-title">Ajout d'un type de projet</h2>
             </header>
             <div class="panel-body">
                 {{ form_start(form) }}
                     {{ form_widget(form) }}
-                    <button class="btn btn-primary">Valider</button>
+                    <div class="form-group">
+                        <button class="btn btn-primary">Valider</button>
+                    </div>
                 {{ form_end(form) }}
             </div>
         </section>

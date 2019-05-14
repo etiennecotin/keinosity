@@ -17,5 +17,6 @@ form:
     rememberMe: 'Se souvenir de moi'
     signin: 'Connexion'
     signup: 'S''inscrire'
-
+  ProjectType:
+    name: 'Nom'
 
