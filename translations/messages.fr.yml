@@ -19,4 +19,9 @@ form:
     signup: 'S''inscrire'
   ProjectType:
     name: 'Nom'
+  Project:
+    name: 'Nom du projet'
+    description: 'Description du projet'
+    location: 'Lieu du projet'
+    type: 'Type de projet'
 
