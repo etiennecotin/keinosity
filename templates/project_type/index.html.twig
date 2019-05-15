@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProjectTypeController!{% endblock %}
+{% block title %}keïnosity - Types de projet{% endblock %}
 
 {% block body %}
 <section role="main" class="content-body">
@@ -27,7 +27,7 @@
                 <a href="#" class="fa fa-times"></a>
             </div>
 
-            <h2 class="panel-title">Rows with Details</h2>
+            <h2 class="panel-title">Liste des types de projet</h2>
         </header>
         <div class="panel-body">
             <div class="row">
@@ -51,7 +51,7 @@
                     <tr>
                         <td>#{{ loop.index }}</td>
                         <td>{{ type.name }}</td>
-                        <td></td>
+                        <td>{{ type.createAt|date('Y-M-D') }}</td>
                         <td><a href="{{ path('edit_project_type', {'id': type.id}) }}"  class="btn btn-primary"><i class="fa fa-edit"></i></a> <a href="{{ path('add_project_type') }}" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
                     </tr>
                 {% endfor %}
