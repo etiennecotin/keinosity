@@ -38,7 +38,7 @@ before_install:
   - mysql -e 'CREATE DATABASE IF NOT EXISTS keinosity_test;'
 #    init jwt private SSH keys
   - mkdir config/jwt
-  - openssl genrsa -out config/jwt/private.pem -aes256 4096 -passout pass:password
+  - openssl genrsa -out config/jwt/private.pem -aes256 4096 <<pass
   - openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem
 
 install:
