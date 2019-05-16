@@ -17,7 +17,7 @@ class RoutesTest extends WebTestCase
         ]);
         $client->request('GET', $url);
 
-        $this->assertTrue($client->getResponse()->isSuccessful(), $client->getResponse()->getStatusCode());
+        $this->assertTrue($client->getResponse()->isSuccessful(), $client->getResponse()->getContent());
     }
 
     public function urlProvider()
