@@ -3,6 +3,9 @@ php:
   - 7.1.9
 sudo: true
 
+services:
+  - mysql
+
 cache:
   directories:
     - $HOME/.composer/cache/files
@@ -26,12 +29,14 @@ matrix:
 before_install:
   - '[[ "$TRAVIS_PHP_VERSION" == "nightly" ]] || phpenv config-rm xdebug.ini'
   - composer self-update
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS keinosity_test;'
 
 install:
   - composer install
   - php bin/phpunit install
 
 script:
+  - php bin/console app:initApp
   - php bin/phpunit
   # this checks that the YAML config files contain no syntax errors
   - php bin/console lint:yaml config
