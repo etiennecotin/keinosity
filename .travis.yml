@@ -36,7 +36,7 @@ install:
   - php bin/phpunit install
 
 script:
-  - php bin/console app:initApp
+  - php bin/console app:initApp true
   - php bin/phpunit
   # this checks that the YAML config files contain no syntax errors
   - php bin/console lint:yaml config
