@@ -37,29 +37,38 @@ class InitAppCommand extends Command
     {
         $this
             ->setDescription('Initialize the first admin user.')
+            ->addArgument('isForTesting', InputArgument::OPTIONAL, 'Execute command on test env')
         ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $io = new SymfonyStyle($input, $output);
+        $isForTesting = $input->getArgument('isForTesting');
 
         $io->writeln(['Create the fist user admin of your application',
                     '============',
                     '']);
 
-        $helper = $this->getHelper('question');
-        $emailQuestion = new Question('Define email [default is admin@admin.com] ', 'admin@admin.com');
-        $email = $helper->ask($input, $output, $emailQuestion);
-        $io->writeln('');
+        if (!$isForTesting) {
+            $helper = $this->getHelper('question');
+            $emailQuestion = new Question('Define email [default is admin@admin.com] ', 'admin@admin.com');
+            $email = $helper->ask($input, $output, $emailQuestion);
+            $io->writeln('');
 
-        $userNameQuestion = new Question('Define userName [default is admin] ', 'admin');
-        $userName = $helper->ask($input, $output, $userNameQuestion);
-        $io->writeln('');
+            $userNameQuestion = new Question('Define userName [default is admin] ', 'admin');
+            $userName = $helper->ask($input, $output, $userNameQuestion);
+            $io->writeln('');
 
-        $passwordQuestion = new Question('Define password [default is admin] ', 'admin');
-        $password = $helper->ask($input, $output, $passwordQuestion);
-        $io->writeln('');
+            $passwordQuestion = new Question('Define password [default is admin] ', 'admin');
+            $password = $helper->ask($input, $output, $passwordQuestion);
+            $io->writeln('');
+        } else {
+            $email = 'admin@admin.com';
+            $userName = 'admin';
+            $password = 'admin';
+        }
+
 
         if ($email && $userName) {
             $io->note(sprintf('Email: %s', $email));
