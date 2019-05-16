@@ -34,6 +34,7 @@ before_install:
 
 install:
   - composer install
+  - php bin/console d:s:u -f
   - php bin/phpunit install
 
 script:
