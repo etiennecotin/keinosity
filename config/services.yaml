@@ -60,3 +60,19 @@ services:
         class: App\EventListener\AuthenticationSuccessListener
         tags:
             - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_success, method: onAuthenticationSuccessResponse }
+
+#    monolog.gelf_handler:
+#        class: Monolog\Handler\GelfHandler
+#        arguments: ['@gelf.publisher']
+#
+#    gelf.publisher:
+#        class: Gelf\Publisher
+#        arguments: ['@gelf.ignore_error_transport']
+#
+#    gelf.ignore_error_transport:
+#        class: Gelf\Transport\IgnoreErrorTransportWrapper
+#        arguments: ['@gelf.transport']
+#
+#    gelf.transport:
+#        class: Gelf\Transport\UdpTransport # or Tcp, Amp, Http,...
+#        arguments: [] # ... whatever is required
