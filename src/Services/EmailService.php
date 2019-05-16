@@ -21,14 +21,19 @@ class EmailService
     /** @var LoggerInterface */
     private $logger;
 
-    const SENDER_EMAIL = 'etienne.cotin.pro@gmail.com';
+    /**
+     * Automatic inject in all service with content of variable sender_email from parameters.yaml
+     * @var string
+     */
+    private $senderEmail;
 
-    public function __construct(\Swift_Mailer $mailer, Environment $twig, RouterInterface $router, LoggerInterface $logger)
+    public function __construct(\Swift_Mailer $mailer, Environment $twig, RouterInterface $router, LoggerInterface $logger, $senderEmail)
     {
         $this->mailer = $mailer;
         $this->twig = $twig;
         $this->router = $router;
         $this->logger = $logger;
+        $this->senderEmail = $senderEmail;
     }
 
     /**
@@ -39,7 +44,7 @@ class EmailService
     {
         try {
             $message = (new \Swift_Message('Hello from keinosity'))
-                ->setFrom(self::SENDER_EMAIL)
+                ->setFrom($this->senderEmail)
                 ->setTo($receiver)
                 ->setBody(
                     $this->twig->render(
@@ -50,13 +55,7 @@ class EmailService
                     'text/html'
                 );
             $this->mailer->send($message);
-        } catch (LoaderError $e) {
-            $logDate = new \DateTime();
-            $this->logger->error('['.$logDate->format('d/m/Y').'] Email was not send');
-        } catch (RuntimeError $e) {
-            $logDate = new \DateTime();
-            $this->logger->error('['.$logDate->format('d/m/Y').'] Email was not send');
-        } catch (SyntaxError $e) {
+        } catch (\Exception $e) {
             $logDate = new \DateTime();
             $this->logger->error('['.$logDate->format('d/m/Y').'] Email was not send');
         }
