@@ -33,7 +33,6 @@ class ProjectController extends AbstractController
     /**
      * @Route("/add", name="add_project")
      * @param Request $request
-     * @param UserInterface $user
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function addProject(Request $request, UserInterface $user)

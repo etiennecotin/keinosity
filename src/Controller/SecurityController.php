@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class SecurityController extends AbstractController
 {
@@ -30,7 +31,7 @@ class SecurityController extends AbstractController
      * @param UserPasswordEncoderInterface $encoder
      * @return Response
      */
-    public function register(Request $request, UserPasswordEncoderInterface $encoder): Response
+    public function register(Request $request, UserPasswordEncoderInterface $encoder, ValidatorInterface $validator): Response
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -38,6 +39,17 @@ class SecurityController extends AbstractController
         $password = $request->request->get('_password');
 
         $user = new User($email);
+        $errors = $validator->validate($user);
+        if (count($errors) > 0) {
+            /*
+             * Uses a __toString method on the $errors variable which is a
+             * ConstraintViolationList object. This gives us a nice string
+             * for debugging.
+             */
+            $errorsString = (string) $errors;
+
+            return new Response($errorsString);
+        }
         $user->setPassword($encoder->encodePassword($user, $password));
         $em->persist($user);
         $em->flush();
