@@ -27,7 +27,7 @@ class EmailService
      */
     private $senderEmail;
 
-    public function __construct(\Swift_Mailer $mailer, Environment $twig, RouterInterface $router, LoggerInterface $logger, $senderEmail)
+    public function __construct(\Swift_Mailer $mailer, Environment $twig, RouterInterface $router, $logger, $senderEmail)
     {
         $this->mailer = $mailer;
         $this->twig = $twig;
@@ -55,6 +55,7 @@ class EmailService
                     'text/html'
                 );
             $this->mailer->send($message);
+            $this->logger->info(' Email successfully send');
         } catch (\Exception $e) {
             $logDate = new \DateTime();
             $this->logger->error('['.$logDate->format('d/m/Y').'] Email was not send');
