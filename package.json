@@ -18,6 +18,7 @@
         "bootstrap": "^4.3.1",
         "bootstrap-datepicker": "^1.8.0",
         "bootstrap-multiselect": "^0.9.13-1",
+        "copy-webpack-plugin": "^5.0.3",
         "flot": "^3.0.2",
         "fs": "0.0.1-security",
         "generate": "^0.14.0",
