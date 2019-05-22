@@ -33,7 +33,6 @@ matrix:
     - php: nightly
 
 before_install:
-  - apt install -y nodejs
   - '[[ "$TRAVIS_PHP_VERSION" == "nightly" ]] || phpenv config-rm xdebug.ini'
   - composer self-update
   - mysql -e 'CREATE DATABASE IF NOT EXISTS keinosity_test;'
