@@ -61,6 +61,10 @@ services:
         tags:
             - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_success, method: onAuthenticationSuccessResponse }
 
+    App\Services\EmailService:
+        arguments:
+            $logger: '@monolog.logger.email'
+
 #    monolog.gelf_handler:
 #        class: Monolog\Handler\GelfHandler
 #        arguments: ['@gelf.publisher']
