@@ -29,9 +29,9 @@ class Project
     private $name;
 
     /**
-     * @var string|null
+     * @var ProjectType|null
      * @Groups({"project"})
-     * @ORM\Column(type="string", length=150)
+     * @ORM\ManyToOne(targetEntity="ProjectType", inversedBy="projects")
      */
     private $type;
 
@@ -103,17 +103,17 @@ class Project
     }
 
     /**
-     * @return string|null
+     * @return ProjectType|null
      */
-    public function getType(): ?string
+    public function getType(): ?ProjectType
     {
         return $this->type;
     }
 
     /**
-     * @param string|null $type
+     * @param ProjectType|null $type
      */
-    public function setType(?string $type): void
+    public function setType(?ProjectType $type): void
     {
         $this->type = $type;
     }

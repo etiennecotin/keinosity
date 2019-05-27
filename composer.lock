@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0497905d41f8455194c4ff8aad73e0f1",
+    "content-hash": "1dcbe51398b323b14679ce86b93a518f",
     "packages": [
         {
             "name": "api-platform/api-pack",
@@ -1590,82 +1590,6 @@
             "time": "2016-10-17T18:31:11+00:00"
         },
         {
-            "name": "friendsofsymfony/user-bundle",
-            "version": "v2.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "1049935edd24ec305cc6cfde1875372fa9600446"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/1049935edd24ec305cc6cfde1875372fa9600446",
-                "reference": "1049935edd24ec305cc6cfde1875372fa9600446",
-                "shasum": ""
-            },
-            "require": {
-                "paragonie/random_compat": "^1 || ^2",
-                "php": "^5.5.9 || ^7.0",
-                "symfony/form": "^2.8 || ^3.0 || ^4.0",
-                "symfony/framework-bundle": "^2.8 || ^3.0 || ^4.0",
-                "symfony/security-bundle": "^2.8 || ^3.0 || ^4.0",
-                "symfony/templating": "^2.8 || ^3.0 || ^4.0",
-                "symfony/twig-bundle": "^2.8 || ^3.0 || ^4.0",
-                "symfony/validator": "^2.8 || ^3.0 || ^4.0",
-                "twig/twig": "^1.28 || ^2.0"
-            },
-            "conflict": {
-                "doctrine/doctrine-bundle": "<1.3",
-                "symfony/doctrine-bridge": "<2.7"
-            },
-            "require-dev": {
-                "doctrine/doctrine-bundle": "^1.3",
-                "friendsofphp/php-cs-fixer": "^2.2",
-                "phpunit/phpunit": "^4.8.35|^5.7.11|^6.5",
-                "swiftmailer/swiftmailer": "^4.3 || ^5.0 || ^6.0",
-                "symfony/console": "^2.8 || ^3.0 || ^4.0",
-                "symfony/phpunit-bridge": "^2.8 || ^3.0 || ^4.0",
-                "symfony/yaml": "^2.8 || ^3.0 || ^4.0"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "FOS\\UserBundle\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Christophe Coevoet",
-                    "email": "stof@notk.org"
-                },
-                {
-                    "name": "FriendsOfSymfony Community",
-                    "homepage": "https://github.com/friendsofsymfony/FOSUserBundle/contributors"
-                },
-                {
-                    "name": "Thibault Duplessis"
-                }
-            ],
-            "description": "Symfony FOSUserBundle",
-            "homepage": "http://friendsofsymfony.github.com",
-            "keywords": [
-                "User management"
-            ],
-            "time": "2018-03-08T08:59:27+00:00"
-        },
-        {
             "name": "gedmo/doctrine-extensions",
             "version": "v2.4.36",
             "source": {
@@ -1798,6 +1722,60 @@
                 "jwt refresh token bundle symfony json web"
             ],
             "time": "2018-12-06T11:02:57+00:00"
+        },
+        {
+            "name": "graylog2/gelf-php",
+            "version": "1.6.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bzikarsky/gelf-php.git",
+                "reference": "2344540be1db5e882990d527588649e065efbde0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bzikarsky/gelf-php/zipball/2344540be1db5e882990d527588649e065efbde0",
+                "reference": "2344540be1db5e882990d527588649e065efbde0",
+                "shasum": ""
+            },
+            "require": {
+                "paragonie/constant_time_encoding": "^1|^2",
+                "php": ">=5.3.9",
+                "psr/log": "~1.0"
+            },
+            "provide": {
+                "psr/log-implementation": "~1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8.36",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Gelf\\": "src/Gelf"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Zikarsky",
+                    "email": "benjamin@zikarsky.de"
+                },
+                {
+                    "name": "gelf-php contributors",
+                    "homepage": "https://github.com/bzikarsky/gelf-php/contributors"
+                }
+            ],
+            "description": "A php implementation to send log-messages to a GELF compatible backend like Graylog2.",
+            "time": "2018-12-17T07:48:16+00:00"
         },
         {
             "name": "jdorn/sql-formatter",
@@ -2389,6 +2367,68 @@
                 "paging"
             ],
             "time": "2018-05-17T09:23:52+00:00"
+        },
+        {
+            "name": "paragonie/constant_time_encoding",
+            "version": "v2.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paragonie/constant_time_encoding.git",
+                "reference": "55af0dc01992b4d0da7f6372e2eac097bbbaffdb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paragonie/constant_time_encoding/zipball/55af0dc01992b4d0da7f6372e2eac097bbbaffdb",
+                "reference": "55af0dc01992b4d0da7f6372e2eac097bbbaffdb",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6|^7",
+                "vimeo/psalm": "^1|^2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ParagonIE\\ConstantTime\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Paragon Initiative Enterprises",
+                    "email": "security@paragonie.com",
+                    "homepage": "https://paragonie.com",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Steve 'Sc00bz' Thomas",
+                    "email": "steve@tobtu.com",
+                    "homepage": "https://www.tobtu.com",
+                    "role": "Original Developer"
+                }
+            ],
+            "description": "Constant-time Implementations of RFC 4648 Encoding (Base-64, Base-32, Base-16)",
+            "keywords": [
+                "base16",
+                "base32",
+                "base32_decode",
+                "base32_encode",
+                "base64",
+                "base64_decode",
+                "base64_encode",
+                "bin2hex",
+                "encoding",
+                "hex",
+                "hex2bin",
+                "rfc4648"
+            ],
+            "time": "2019-01-03T20:26:31+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -4597,16 +4637,16 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.10.0",
+            "version": "v1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "c79c051f5b3a46be09205c73b80b346e4153e494"
+                "reference": "fe5e94c604826c35a32fa832f35bd036b6799609"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/c79c051f5b3a46be09205c73b80b346e4153e494",
-                "reference": "c79c051f5b3a46be09205c73b80b346e4153e494",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/fe5e94c604826c35a32fa832f35bd036b6799609",
+                "reference": "fe5e94c604826c35a32fa832f35bd036b6799609",
                 "shasum": ""
             },
             "require": {
@@ -4618,7 +4658,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.9-dev"
+                    "dev-master": "1.11-dev"
                 }
             },
             "autoload": {
@@ -4652,7 +4692,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-09-21T13:07:52+00:00"
+            "time": "2019-02-06T07:57:58+00:00"
         },
         {
             "name": "symfony/process",
@@ -5479,16 +5519,16 @@
         },
         {
             "name": "symfony/templating",
-            "version": "v4.2.3",
+            "version": "v4.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/templating.git",
-                "reference": "e1de3b189a2eb94b963cd2ee807f815777340fe0"
+                "reference": "1bb2d2eda3136fff122b8810ac1357440411abeb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/templating/zipball/e1de3b189a2eb94b963cd2ee807f815777340fe0",
-                "reference": "e1de3b189a2eb94b963cd2ee807f815777340fe0",
+                "url": "https://api.github.com/repos/symfony/templating/zipball/1bb2d2eda3136fff122b8810ac1357440411abeb",
+                "reference": "1bb2d2eda3136fff122b8810ac1357440411abeb",
                 "shasum": ""
             },
             "require": {
@@ -5531,7 +5571,7 @@
             ],
             "description": "Symfony Templating Component",
             "homepage": "https://symfony.com",
-            "time": "2019-01-16T20:31:39+00:00"
+            "time": "2019-02-23T15:17:42+00:00"
         },
         {
             "name": "symfony/translation",
@@ -5995,6 +6035,60 @@
             "time": "2019-01-16T20:31:39+00:00"
         },
         {
+            "name": "symfony/webpack-encore-bundle",
+            "version": "v1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/webpack-encore-bundle.git",
+                "reference": "2384cfde92226f2447eb422570c322afe2ae15ea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/webpack-encore-bundle/zipball/2384cfde92226f2447eb422570c322afe2ae15ea",
+                "reference": "2384cfde92226f2447eb422570c322afe2ae15ea",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.3",
+                "symfony/asset": "^3.4 || ^4.0",
+                "symfony/config": "^3.4 || ^4.0",
+                "symfony/contracts": "^1.0",
+                "symfony/dependency-injection": "^3.4 || ^4.0",
+                "symfony/http-kernel": "^3.4 || ^4.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.14",
+                "symfony/framework-bundle": "^3.4 || ^4.0",
+                "symfony/phpunit-bridge": "^3.4 || ^4.1",
+                "symfony/twig-bundle": "^3.4 || ^4.0",
+                "twig/twig": "^1.35 || ^2.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "thanks": {
+                    "name": "symfony/webpack-encore",
+                    "url": "https://github.com/symfony/webpack-encore"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\WebpackEncoreBundle\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Integration with your Symfony app & Webpack Encore!",
+            "time": "2019-04-10T17:55:40+00:00"
+        },
+        {
             "name": "symfony/yaml",
             "version": "v4.2.3",
             "source": {
@@ -6110,16 +6204,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v2.6.2",
+            "version": "v2.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "7d7342c8a4059fefb9b8d07db0cc14007021f9b7"
+                "reference": "82a1c055c8ed4c4705023bfd0405f3c74db6e3ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/7d7342c8a4059fefb9b8d07db0cc14007021f9b7",
-                "reference": "7d7342c8a4059fefb9b8d07db0cc14007021f9b7",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/82a1c055c8ed4c4705023bfd0405f3c74db6e3ae",
+                "reference": "82a1c055c8ed4c4705023bfd0405f3c74db6e3ae",
                 "shasum": ""
             },
             "require": {
@@ -6135,7 +6229,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.6-dev"
+                    "dev-master": "2.9-dev"
                 }
             },
             "autoload": {
@@ -6173,7 +6267,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2019-01-14T15:00:48+00:00"
+            "time": "2019-04-28T06:57:38+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -6948,16 +7042,16 @@
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v4.2.3",
+            "version": "v4.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
-                "reference": "4ea7d80a7512ddc41d5af598978edcd395140edc"
+                "reference": "31f2e3c10bc9bd955ca1ae3e4da2bb489205714a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/4ea7d80a7512ddc41d5af598978edcd395140edc",
-                "reference": "4ea7d80a7512ddc41d5af598978edcd395140edc",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/31f2e3c10bc9bd955ca1ae3e4da2bb489205714a",
+                "reference": "31f2e3c10bc9bd955ca1ae3e4da2bb489205714a",
                 "shasum": ""
             },
             "require": {
@@ -6967,7 +7061,6 @@
                 "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0"
             },
             "suggest": {
-                "ext-zip": "Zip support is required when using bin/simple-phpunit",
                 "symfony/debug": "For tracking deprecated interfaces usages at runtime with DebugClassLoader"
             },
             "bin": [
@@ -7010,7 +7103,7 @@
             ],
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
-            "time": "2019-01-24T21:39:51+00:00"
+            "time": "2019-04-23T14:37:24+00:00"
         },
         {
             "name": "symfony/polyfill-php72",

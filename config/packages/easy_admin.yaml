@@ -7,3 +7,4 @@ easy_admin:
         - App\Entity\Event
         - App\Entity\Reporting
         - App\Entity\Project
+        - App\Entity\ProjectType

@@ -1,0 +1,27 @@
+form:
+  registration:
+    email: 'Votre email'
+    firstname: 'Prénom'
+    lastname: 'Nom de famille'
+    birthday: 'Date de naissance'
+    password: 'Mot de passe'
+    repeatedPassword: 'Mot de passe répété'
+    termAccepted: 'Accepter les conditions d''utilisations'
+    login: 'Se connecter'
+    signup: 'S''inscrire'
+    register: 'Inscription'
+  login:
+    email: 'Votre email'
+    password: 'Mot de passe'
+    lostPassord: 'Mot de passe oublié ?'
+    rememberMe: 'Se souvenir de moi'
+    signin: 'Connexion'
+    signup: 'S''inscrire'
+  ProjectType:
+    name: 'Nom'
+  Project:
+    name: 'Nom du projet'
+    description: 'Description du projet'
+    location: 'Lieu du projet'
+    type: 'Type de projet'
+

@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}keïnosity - Types de projet{% endblock %}
+
+{% block body %}
+<section role="main" class="content-body">
+    <header class="page-header">
+        <h2>Tableau de bord</h2>
+
+        <div class="right-wrapper pull-right">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="index.html">
+                        <i class="fa fa-home"></i>
+                    </a>
+                </li>
+                <li><span>Dashboard</span></li>
+            </ol>
+
+            <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
+        </div>
+    </header>
+    <section class="panel">
+        <header class="panel-heading">
+            <div class="panel-actions">
+                <a href="#" class="fa fa-caret-down"></a>
+                <a href="#" class="fa fa-times"></a>
+            </div>
+
+            <h2 class="panel-title">Liste des types de projet</h2>
+        </header>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="mb-md">
+                        <a href="{{ path('add_project_type') }}" id="addToTable" class="btn btn-primary" >Ajouter <i class="fa fa-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered table-striped mb-none" id="datatable-details">
+                <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Nom</th>
+                    <th>Date de création</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for type in projectsType %}
+                    <tr>
+                        <td>#{{ loop.index }}</td>
+                        <td>{{ type.name }}</td>
+                        <td>{{ type.createAt|date('Y-M-D') }}</td>
+                        <td><a href="{{ path('edit_project_type', {'id': type.id}) }}"  class="btn btn-primary"><i class="fa fa-edit"></i></a> <a href="{{ path('add_project_type') }}" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+</section>
+{% endblock %}

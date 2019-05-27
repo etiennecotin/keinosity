@@ -1,0 +1,4 @@
+parameters:
+  sender_email: 'etienne.cotin@gmail.com'
+#  logstash_gelf_host: '127.0.0.1'
+#  logstash_gelf_port: ''
